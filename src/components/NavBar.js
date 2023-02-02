@@ -1,4 +1,5 @@
 import "../styles/NavBar.css";
+import CartWidget from "./CartWidget";
 
 function NavBar(){
     return(
@@ -9,6 +10,7 @@ function NavBar(){
                 <li><a href="#quemsomos">Quem Somos</a></li>
                 <li><a href="#Contato">Contato</a></li>
             </ul>
+            <CartWidget />
         </nav>
     );
 }

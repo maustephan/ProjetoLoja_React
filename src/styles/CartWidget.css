@@ -1,0 +1,21 @@
+.iconCar{
+    border-radius: 50px;
+    height: 60px;
+    background-color: #000000;
+    position: fixed;
+    /* bottom: 20px; */
+    top: 20px;
+    right: 30px;
+    cursor: pointer;
+    /* z-index: 9999; */
+}
+.iconCar a{
+    display: flex;
+    margin: 10px;
+    color: white;
+    text-decoration: none;
+}
+.iconCar i{
+    font-size: 35px;
+    padding: 5px;
+}
