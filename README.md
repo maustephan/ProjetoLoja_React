@@ -8,7 +8,11 @@ Status: Em construção!!!
 
 ### Organização das pastas
 
-O site estará separdo pelas pastas de components, images e Styles, sendo que estilização dos componentes estarão na pasta Styles..
+O site estará separado pelas pastas de components, images e Styles, sendo que a estilização dos componentes estarão na pasta Styles..
+
+## Atualizações do Projeto
+
+Criação dos Componentes CartWidget e ItemListContainer;
 
 ## Mais Informações
 Para mais informações acompanhe o projeto.
