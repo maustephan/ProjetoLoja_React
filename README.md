@@ -13,6 +13,7 @@ O site estará separado pelas pastas de components, images e Styles, sendo que a
 ## Atualizações do Projeto
 
 Criação dos Componentes CartWidget e ItemListContainer;
+Criação do botão contador ItemCount;
 
 ## Mais Informações
 Para mais informações acompanhe o projeto.
