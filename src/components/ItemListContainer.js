@@ -1,4 +1,6 @@
 import ItemCount from "./ItemCount";
+import Item from "./Item";
+import ItemList from "./ItemList";
 
 function ItemListContainer() {
     return(
@@ -7,7 +9,11 @@ function ItemListContainer() {
             Meu e-Commerce
         </h1>
         <h2>Loja InfoTec</h2>
-        <ItemCount stock={5} initial={1} />
+         
+          <ItemList>
+            {/* <Item /> */}
+          </ItemList>
+          <ItemCount stock={5} initial={1} />
       </>
     );
   }

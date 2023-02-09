@@ -14,6 +14,7 @@ O site estará separado pelas pastas de components, images e Styles, sendo que a
 
 Criação dos Componentes CartWidget e ItemListContainer;
 Criação do botão contador ItemCount;
+Criação do componente ItemList e async mock;
 
 ## Mais Informações
 Para mais informações acompanhe o projeto.

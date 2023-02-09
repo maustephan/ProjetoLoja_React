@@ -1,0 +1,22 @@
+ul{
+    list-style: none;
+    display: flex;
+}
+
+.prateleira{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+    
+}
+
+.produto{
+    border: 1px solid rgb(187, 186, 186);
+    border-radius: 10px;
+    width: 220px;
+    padding: 10px;
+    margin: 10px 0 0 20px;
+    box-shadow: 1px 1px 0.5px #ddd;
+
+}
