@@ -4,11 +4,8 @@ ul{
 }
 
 .prateleira{
-    display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-
-    
 }
 
 .produto{

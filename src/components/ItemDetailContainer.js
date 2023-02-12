@@ -1,39 +1,31 @@
-import { useEffect, useState } from 'react';
-import Spinner from './Spinner';
-import Item from "./Item";
-import ItemDetail from './ItemDetail';
-import ItemDetailContainer from './ItemDetailContainer';
+import { useEffect, useState } from "react";
+import ItemDetail from "./ItemDetail";
 
-function ItemList( {items} ){
-    const [isLoading, setIsLoading] = useState(true);
-    const [data, setData] = useState([]);
 
-    function getData(isSuccess = true) {
+function ItemDetailContainer() {
+    const [ itemId, setItemId] = useState(0);
+
+
+    const getItem = () => {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                if (isSuccess) {
-                    resolve(products);
-                }
-
+                resolve(itemId);
                 reject("Problema na chamda ao DB");
             }, 2000);
         });
     }
 
     useEffect( () => {
-        getData(true)
-            .then((retorno) => {
-                setData(retorno);
+        getItem()
+            .then((retorno) =>{
+                setItemId(retorno);
             })
             .catch((retorno) => {
                 console.error(retorno);
             })
-            .finally(() => {
-                setIsLoading(false);
-            });
     }, []);
 
-    const products = [
+    const prod = [
         { id: 1, title: "PROCESSADOR", description: "Computador It is a long established ", category:"Hardware", price: 2200, pictureUrl: 'https://picsum.photos/200'},
         { id: 2, title: "HD", description: "Hd It is a long established ", category:"Hardware", price: 200, pictureUrl: 'https://picsum.photos/200/'},
         { id: 3,title: "MOUSE", description: "Mouse It is a long established ", category:"Periféricos", price: 60, pictureUrl: 'https://picsum.photos/200//'},
@@ -47,34 +39,9 @@ function ItemList( {items} ){
         { id: 11,title: "CAIXA DE SOM", description: "Monitor It is a long established ", category:"Periféricos", price: 1999, pictureUrl: 'https://picsum.photos/200//////////'}
     ];
 
-    if (isLoading) {
-        return <Spinner />;
-    }
+    return <ItemDetail item={prod[itemId]}/>;
 
-    return (
-        <>
-        <Item item={products} />
-        <ItemDetailContainer />
-        </>
 
-    //         {data.length > 0 && (
-    //             <div className="prateleira">
-    //                 <ul>
-    //                     {data.map((d) => (
-    //                         <li key={d.id} className='produto'>
-    //                             <h3>{d.title}</h3>
-    //                             <img src={d.pictureUrl} />
-    //                             <a href="#">{d.description}</a>
-    //                             <p>R${d.price}</p>
-                                
-    //                         </li>
-    //                     ))}
-    //                 </ul>
-    //             </div>
-    //         )}
-    //     </>
-    );
-    
-};
+}
 
-export default ItemList;
+export default ItemDetailContainer;
