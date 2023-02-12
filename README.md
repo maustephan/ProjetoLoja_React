@@ -15,6 +15,8 @@ O site estará separado pelas pastas de components, images e Styles, sendo que a
 Criação dos Componentes CartWidget e ItemListContainer;
 Criação do botão contador ItemCount;
 Criação do componente ItemList e async mock;
+Criação dos componentes ItemDetailContainer e ItemDetail;
+Instalação do pacote React-Icons e alguns ajustes em estilos;  
 
 ## Mais Informações
 Para mais informações acompanhe o projeto.

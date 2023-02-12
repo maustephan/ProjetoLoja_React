@@ -2,18 +2,18 @@ import ItemCount from "./ItemCount";
 import Item from "./Item";
 import ItemList from "./ItemList";
 
-function ItemListContainer() {
+function ItemListContainer({ greeting }) {
     return(
       <>
         <h1 className="title">
-            Meu e-Commerce
+          Loja InfoTec
         </h1>
-        <h2>Loja InfoTec</h2>
+        <h2>Olá {greeting}, Seja Bem-Vindo!!</h2>
          
-          <ItemList>
-            {/* <Item /> */}
+          <ItemList >
+            
           </ItemList>
-          <ItemCount stock={5} initial={1} />
+            <ItemCount stock={5} initial={1} />
       </>
     );
   }

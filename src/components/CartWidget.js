@@ -2,9 +2,9 @@ import "../styles/CartWidget.css";
 
 function CartWidget (){
     return (
-        <span class="iconCar">
+        <span className="iconCar">
             <a href="#car">
-                <i class="fa-solid fa-cart-shopping"></i>
+                <i className="fa-solid fa-cart-shopping"></i>
             </a>
         </span>
     );
