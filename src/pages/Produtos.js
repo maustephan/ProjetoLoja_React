@@ -1,11 +1,16 @@
-import { useEffect, useState } from 'react';
-import Spinner from './Spinner';
-import Item from "./Item";
-import products from './Mock';
+import React from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import Item from "../components/Item";
+import Spinner from "../components/Spinner";
+import products from '../components/Mock';
 
-function ItemList( {items} ){
+
+function Produtos(){
+
     const [isLoading, setIsLoading] = useState(true);
     const [data, setData] = useState([]);
+    const {category} = useParams();
 
     function getData(isSuccess = true) {
         return new Promise((resolve, reject) => {
@@ -38,10 +43,9 @@ function ItemList( {items} ){
 
     return (
         <>  
-            <Item item={products} />
+            <Item item={products.filter(element => element.category === category)} />
         </>
     );
-    
-};
+}
 
-export default ItemList;
+export default Produtos;

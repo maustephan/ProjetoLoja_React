@@ -1,5 +1,3 @@
-import ItemCount from "./ItemCount";
-import Item from "./Item";
 import ItemList from "./ItemList";
 
 function ItemListContainer({ greeting }) {
@@ -10,10 +8,7 @@ function ItemListContainer({ greeting }) {
         </h1>
         <h2>Olá {greeting}, Seja Bem-Vindo!!</h2>
          
-          <ItemList >
-            
-          </ItemList>
-            <ItemCount stock={5} initial={1} />
+        <ItemList />
       </>
     );
   }
