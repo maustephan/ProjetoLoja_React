@@ -1,4 +1,8 @@
+import ItemCount from "./ItemCount";
+
 function ItemDetail({ item }){
+    
+
     return (
         <>  
             <div>
@@ -7,6 +11,7 @@ function ItemDetail({ item }){
                 <p>{item.description}</p>
                 <p>{item.category}</p>
                 <h3>R${item.price}</h3>
+                <ItemCount stock={5} initial={1} />
             </div>
         </>
     );
