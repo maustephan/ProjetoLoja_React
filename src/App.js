@@ -6,12 +6,15 @@ import NotFound from './pages/NotFound';
 import Produtos from './pages/Produtos';
 import ItemDetail from './components/ItemDetail';
 import ItemDetailContainer from './components/ItemDetailContainer';
+import { CartContext } from './context/cartContext';
 
+const teste = "TEstandooo"
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
+        <CartContext.Provider value={teste} >
+        <div className="App">
         <NavBar />
         <Routes>
           <Route exact path='/' element={<ItemListContainer greeting="Mauro"/>} />
@@ -20,6 +23,7 @@ function App() {
           <Route exact path='/*' element={<NotFound />} />
         </Routes>
       </div>
+      </CartContext.Provider>
     </BrowserRouter>
   );
 }
