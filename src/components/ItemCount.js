@@ -1,21 +1,35 @@
 import React, {useState} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { Link } from 'react-router-dom';
 
 
-function ItemCount({ stock, initial, onAdd}){
+function ItemCount({ initial, stock, onConfirm, onAdd}){
 
-    const [counter, setCounter] = useState(initial);
-
+    const [counter, setCounter] = useState(initial);    
+    
     const stylesFonts = {
         textAlign: 'center',
         marginLeft: '10px',
         marginRight: '10px',
         fontSize: '25px'        
     }
+        
+    function handleClick() {
+        onConfirm(counter);
+    }
+
+    function handleDecrement() {
+        setCounter((p) => Math.max(p - 1, 1))
+    }
+
+    function handleIncrement() {
+        setCounter((p)=> Math.min(p + 1, stock));
+        
+    }
 
     return(
-        <div>
+        <>
             <div style={{
                 display:'inline-block',
                 width: '150px',
@@ -26,11 +40,7 @@ function ItemCount({ stock, initial, onAdd}){
                 <FontAwesomeIcon 
                     icon={faMinus} 
                     style={stylesFonts}
-                    onClick={ () => {
-                        if (counter !== initial){
-                            setCounter((aumentaProduto) => aumentaProduto - 1);
-                        }
-                    }}
+                    onClick={handleDecrement}
                 />
                 <span style={{
                     fontSize:'25px', 
@@ -41,15 +51,15 @@ function ItemCount({ stock, initial, onAdd}){
                 <FontAwesomeIcon 
                     icon={faPlus} 
                     style={stylesFonts}
-                    onClick={ () => {
-                        if (counter !== stock) {
-                            setCounter((diminuiProduto) => diminuiProduto + 1);
-                        }
-                    }} 
+                    onClick={handleIncrement} 
                 />
+            
+            <p><button onClick={handleClick}>Adicionar Carrinho</button></p>
+            <button>
+                Finalizar Compra
+            </button>
             </div>
-            <p><button>Adicionar Carrinho</button></p>
-        </div>
+        </>
     );
 
 }

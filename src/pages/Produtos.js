@@ -6,6 +6,7 @@ import Spinner from "../components/Spinner";
 import products from '../components/Mock';
 
 
+
 function Produtos(){
 
     const [isLoading, setIsLoading] = useState(true);
@@ -44,6 +45,7 @@ function Produtos(){
     return (
         <>  
             <Item item={products.filter(element => element.category === category)} />
+ 
         </>
     );
 }
