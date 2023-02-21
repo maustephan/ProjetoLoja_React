@@ -7,6 +7,7 @@ import Produtos from './pages/Produtos';
 import ItemDetail from './components/ItemDetail';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import { CartContext } from './context/cartContext';
+import Cart from './pages/Cart';
 
 const teste = "TEstandooo"
 
@@ -20,6 +21,7 @@ function App() {
           <Route exact path='/' element={<ItemListContainer greeting="Mauro"/>} />
           <Route exact path='/category/:category' element={<Produtos />} />
           <Route exact path='/produtos/:id' element={<ItemDetailContainer />} />
+          <Route exact path='/cart' element={<Cart />} />
           <Route exact path='/*' element={<NotFound />} />
         </Routes>
       </div>

@@ -1,11 +1,12 @@
 import "../styles/CartWidget.css";
+import { Link } from "react-router-dom";
 
 function CartWidget (){
     return (
         <span className="iconCar">
-            <a href="#car">
+            <Link to="/cart" className="link">
                 <i className="fa-solid fa-cart-shopping"></i>
-            </a>
+            </Link>
         </span>
     );
 }
