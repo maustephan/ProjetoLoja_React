@@ -4,17 +4,23 @@ import ItemListContainer from './components/ItemListContainer';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import NotFound from './pages/NotFound';
 import Produtos from './pages/Produtos';
-import ItemDetail from './components/ItemDetail';
 import ItemDetailContainer from './components/ItemDetailContainer';
-import { CartContext } from './context/cartContext';
+import { CartContext, CartProvider } from './context/CartContext';
 import Cart from './pages/Cart';
 
-const teste = "TEstandooo"
+// const objetosAcesso = {
+//   name: "Mauro",
+//   itensAdicionados: ["processador","hd","microfone"],
+//   pagamentoEfetuado: false,
+//   logar: () => console.log("Função no contexto")
+// };
+
 
 function App() {
+
   return (
     <BrowserRouter>
-        <CartContext.Provider value={teste} >
+      <CartProvider>
         <div className="App">
         <NavBar />
         <Routes>
@@ -25,7 +31,7 @@ function App() {
           <Route exact path='/*' element={<NotFound />} />
         </Routes>
       </div>
-      </CartContext.Provider>
+      </CartProvider>
     </BrowserRouter>
   );
 }

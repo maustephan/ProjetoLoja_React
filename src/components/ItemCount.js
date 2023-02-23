@@ -4,9 +4,9 @@ import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { Link } from 'react-router-dom';
 
 
-function ItemCount({ initial, stock, onConfirm, onAdd}){
+function ItemCount({ initial, stock, onAdd}){
 
-    const [counter, setCounter] = useState(initial);    
+    const [valor, setValor] = useState(initial);    
     
     const stylesFonts = {
         textAlign: 'center',
@@ -16,15 +16,15 @@ function ItemCount({ initial, stock, onConfirm, onAdd}){
     }
         
     function handleClick() {
-        onConfirm(counter);
+        onAdd(valor);
     }
 
     function handleDecrement() {
-        setCounter((p) => Math.max(p - 1, 1))
+        setValor((p) => Math.max(p - 1, 1))
     }
 
     function handleIncrement() {
-        setCounter((p)=> Math.min(p + 1, stock));
+        setValor((p)=> Math.min(p + 1, stock));
         
     }
 
@@ -47,7 +47,7 @@ function ItemCount({ initial, stock, onConfirm, onAdd}){
                     marginLeft:'20px', 
                     marginRight: '20px',
                     fontFamily:'monospace'
-                }}>{counter}</span>
+                }}>{valor}</span>
                 <FontAwesomeIcon 
                     icon={faPlus} 
                     style={stylesFonts}
@@ -55,9 +55,6 @@ function ItemCount({ initial, stock, onConfirm, onAdd}){
                 />
             
             <p><button onClick={handleClick}>Adicionar Carrinho</button></p>
-            <button>
-                Finalizar Compra
-            </button>
             </div>
         </>
     );
