@@ -4,6 +4,7 @@
     display: flex;
     justify-content: flex-end;
     padding-right: 120px;
+    background-color: rgb(247, 247, 247);
 }
 .navbar ul{
     list-style: none;

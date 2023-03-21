@@ -5,8 +5,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import NotFound from './pages/NotFound';
 import Produtos from './pages/Produtos';
 import ItemDetailContainer from './components/ItemDetailContainer';
-import { CartContext, CartProvider } from './context/CartContext';
+import { CartProvider } from './context/CartContext';
 import Cart from './pages/Cart';
+import Footer from './components/Footer';
 
 // const objetosAcesso = {
 //   name: "Mauro",
@@ -25,11 +26,12 @@ function App() {
         <NavBar />
         <Routes>
           <Route exact path='/' element={<ItemListContainer greeting="Mauro"/>} />
-          <Route exact path='/category/:category' element={<Produtos />} />
+          <Route exact path='/category/:categoryId' element={<Produtos />} />
           <Route exact path='/produtos/:id' element={<ItemDetailContainer />} />
           <Route exact path='/cart' element={<Cart />} />
           <Route exact path='/*' element={<NotFound />} />
         </Routes>
+        {/* <Footer /> */}
       </div>
       </CartProvider>
     </BrowserRouter>

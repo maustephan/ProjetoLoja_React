@@ -1,29 +1,41 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ItemDetail from "./ItemDetail";
-import products from "./Mock";
+// import products from "./Mock";
 import Spinner from "./Spinner";
+import { getFirestore, doc, getDoc } from "firebase/firestore"
 
 
 function ItemDetailContainer() {
-        const {id} = useParams();
+        // const {id} = useParams();
+        const params = useParams();
         const [isLoading, setIsLoading] = useState(true);
-    const [data, setData] = useState([]);
+        const [produto, setProduto] = useState([]);
     
-        const getData = () => {
-            return new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    resolve(products);
-                    reject("Problema na chamda ao DB");
-                }, 2000);
-            });
-        }
+        // const getData = (isSuccess = true) => {
+        //     return new Promise((resolve, reject) => {
+        //         setTimeout(() => {
+        //             if (isSuccess) {
+        //                 resolve(products);
+
+        //             }
+        //             reject("Problema na chamda ao DB");
+        //         }, 1000);
+        //     });
+        // }
 
         useEffect( () => {
-            getData(true)
-                .then((retorno) => {
-                    setData(retorno);
+            getDoc(doc(getFirestore(), "items", `${params.id}`))
+                .then((querySnapshot) => {
+                    if (querySnapshot.exists()) {
+                        const item = {
+                            id: querySnapshot.id,
+                            ...querySnapshot.data(),
+                        };
+                        return item;
+                    }
                 })
+                .then((data) => setProduto(data))
                 .catch((retorno) => {
                     console.error(retorno);
                 })
@@ -35,12 +47,14 @@ function ItemDetailContainer() {
         if (isLoading) {
             return <Spinner />;
         }
-
-        return (
-            <>
-                <ItemDetail item={products[id]}/>
-            </>
-        );
+        
+        if (produto) {
+            
+            return <ItemDetail item={produto}/>
+            
+        }
+        
+        return <p>Produto não encontrado</p>
 
    
 }
