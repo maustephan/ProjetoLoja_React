@@ -9,7 +9,7 @@ import "../styles/Cart.css";
 function Cart() {
   const {cart, removeFromCart, clear, isInCart, totalItens, valorTotal, generateOrder} = useCart();
   const formater = new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'})
-  console.log(cart)
+  // console.log(cart)
   const [modal, setModal] = useState(false);
   const [numPedido, setNumPedido] = useState('');
   const [nomeCompleto,setNomeCompleto] = useState('');
@@ -31,15 +31,9 @@ function Cart() {
   
   function sendOrder({nomeCompleto, phone, email}){
 
-    console.log(nomeCompleto,"nome")
-    console.log(phone,"phone")
-    console.log(email,"email")
-
     const order = generateOrder({nomeCompleto, phone, email});
     const db = getFirestore();
     const collectionRef = collection(db, "orders");
-    
-    console.log(generateOrder.name,"generate")
     
     addDoc(collectionRef, order)
       .then(({ id }) => {
@@ -55,7 +49,7 @@ function Cart() {
   function handleSubmit(e) {
     e.preventDefault();
     if (validaEmail(email) && (email === emailConfirm)){
-      sendOrder({nomeCompleto, phone, email});
+      return(sendOrder({nomeCompleto, phone, email}));
     }
     alert("E-mail diferente, favor conferir os e-mail's digitados");
   }
@@ -144,7 +138,6 @@ function Cart() {
                 </form>
                 </div>
             <ModalPedido openModal={modal} pedido={numPedido}/>
-            {console.log()}
             </>
             ) : (
                   <>

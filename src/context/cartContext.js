@@ -52,7 +52,7 @@ export function CartProvider({ children }){
             data: new Date(),
             total: valorTotal,
         };
-        console.log()
+     
     }
 
 
