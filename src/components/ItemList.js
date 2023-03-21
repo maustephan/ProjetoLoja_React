@@ -1,28 +1,32 @@
 import { useEffect, useState } from 'react';
 import Spinner from './Spinner';
 import Item from "./Item";
-import products from './Mock';
+// import products from './Mock';
+import { collection, getDocs, getFirestore } from "firebase/firestore"
 
 function ItemList( {items} ){
     const [isLoading, setIsLoading] = useState(true);
-    const [data, setData] = useState([]);
+    const [products, setProducts] = useState();
 
-    function getData(isSuccess = true) {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                if (isSuccess) {
-                    resolve(products);
-                }
+    // function getData(isSuccess = true) {
+    //     return new Promise((resolve, reject) => {
+    //         setTimeout(() => {
+    //             if (isSuccess) {
+    //                 resolve(products);
+    //             }
 
-                reject("Problema na chamda ao DB");
-            }, 2000);
-        });
-    }
+    //             reject("Problema na chamda ao DB");
+    //         }, 2000);
+    //     });
+    // }
 
     useEffect( () => {
-        getData(true)
-            .then((retorno) => {
-                setData(retorno);
+        const db = getFirestore();
+        const itemsCollection = collection(db, "items");
+
+        getDocs(itemsCollection)
+            .then((snapshot) => {
+                setProducts(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
             })
             .catch((retorno) => {
                 console.error(retorno);
